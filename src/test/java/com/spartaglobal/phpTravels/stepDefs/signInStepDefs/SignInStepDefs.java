@@ -63,7 +63,12 @@ public class SignInStepDefs {
 
     @Then("I will be taken to my account page")
     public void i_will_be_taken_to_my_account_page() {
-        Assert.assertEquals(phpTravelsSite.getSignIn().checkIfLoginSuccessful(),"https://www.phptravels.net/account");
+        try {
+            Thread.sleep(3*1000); // Wait 3 seconds before moving to the Assert condition
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        Assert.assertEquals(phpTravelsSite.getSignIn().checkIfLoginSuccessful(),"https://www.phptravels.net/account/");
     }
 
 

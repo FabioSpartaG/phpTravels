@@ -1,16 +1,20 @@
-package com.spartaglobal.phpTravels.stepDefs.signInStepDefs;
+package com.spartaglobal.phpTravels.stepDefs.signUpStepDefs;
 
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
 import org.junit.runner.RunWith;
 
+
+
+
     @RunWith(Cucumber.class)
     @CucumberOptions(
             plugin={"pretty", "html:reports/report.html"},
             tags = {""},
-            features = "classpath:features/SignInFeatures",
-            glue = "com.spartaglobal.phpTravels.stepDefs.signInStepDefs"
+            features = "classpath:features/SignUpFeatures",
+            glue = "com.spartaglobal.phpTravels.stepDefs.signUpStepDefs"
     )
 
-    public class loginCucumberTestRunner
+    public class signUpCucumberTestRunner
     { }
+
