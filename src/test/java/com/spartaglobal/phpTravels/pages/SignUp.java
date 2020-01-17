@@ -20,6 +20,7 @@ public class SignUp {
     private By passwordTextBox = By.name("password");
     private By confirmPasswordTextBox = By.name("confirmpassword");
     private By getSignUpButton = By.xpath("//button[@class='signupbtn btn_full btn btn-success btn-block btn-lg']");
+    private By getErrorMessageText = By.xpath("//div[@class='alert alert-danger']");
 
     public SignUp clickSignUpButton(){
         driver.findElement(signUpButton).click();
@@ -72,5 +73,18 @@ public class SignUp {
 
     public String getAccountURL(){
        return driver.getCurrentUrl();
+    }
+
+    public String getErrorMessageText(){
+        return driver.findElement(getErrorMessageText).getText();
+    }
+
+    public SignUp threadSleep(){
+        try {
+            Thread.sleep(2*1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return this;
     }
 }

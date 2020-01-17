@@ -78,11 +78,23 @@ public class SignUpStepDefs {
 
     @Then("I should be taken to my account's page")
     public void i_should_be_taken_to_my_account_s_page() {
-        try {
-            Thread.sleep(3*1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        phpTravelsSite.getSignUp().threadSleep();
         Assert.assertEquals(phpTravelsSite.getSignUp().getAccountURL(),"https://www.phptravels.net/account/");
+    }
+
+    /**
+     *     Scenario Outline: I will receive a valid error message if my passwords entered do not match
+     */
+
+    @When("I enter a different password {string}")
+    public void i_enter_a_different_password(String string) {
+        phpTravelsSite.getSignUp().confirmPassword(string);
+    }
+
+    @Then("I should receive a valid error message")
+    public void i_should_receive_a_valid_error_message() {
+        phpTravelsSite.getSignUp().threadSleep();
+       String errorText =  phpTravelsSite.getSignUp().getErrorMessageText();
+       Assert.assertTrue(errorText.contains("Password not matching with confirm password."));
     }
 }
