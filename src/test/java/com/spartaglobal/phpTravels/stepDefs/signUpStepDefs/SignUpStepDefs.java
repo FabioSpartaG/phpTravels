@@ -95,6 +95,26 @@ public class SignUpStepDefs {
     public void i_should_receive_a_valid_error_message() {
         phpTravelsSite.getSignUp().threadSleep();
        String errorText =  phpTravelsSite.getSignUp().getErrorMessageText();
-       Assert.assertTrue(errorText.contains("Password not matching with confirm password."));
+       Assert.assertTrue(errorText.contains("Password not matching with confirm password.")
+               || (errorText.contains("The Email field must contain a valid email address."))
+               || (errorText.contains("The Password field must be at least 6 characters in length.")));
+    }
+
+    /**
+     * Scenario Outline: I will receive a valid error message if I input an invalid email
+     * @param string
+     */
+    @When("I enter an invalid email {string}")
+    public void i_enter_an_invalid_email(String string) {
+        phpTravelsSite.getSignUp().enterEmail(string);
+    }
+
+    /**
+     * Scenario Outline: I will receive a valid error message if I input an invalid password
+     * @param string
+     */
+    @When("I enter an invalid password {string}")
+    public void i_enter_an_invalid_password(String string) {
+        phpTravelsSite.getSignUp().enterPassword(string);
     }
 }
