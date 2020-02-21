@@ -11,7 +11,7 @@ import org.junit.Assert;
 public class SignInStepDefs {
 
 
-    private static SeleniumConfig seleniumConfig = new SeleniumConfig("chrome","C:\\Users\\fabio\\Downloads\\chromedriver.exe");
+    private static SeleniumConfig seleniumConfig = new SeleniumConfig("chrome","D:\\Java\\chromedriver.exe");
     private static PHPTravelsSite phpTravelsSite = new PHPTravelsSite(seleniumConfig.getDriver());
 
     /**

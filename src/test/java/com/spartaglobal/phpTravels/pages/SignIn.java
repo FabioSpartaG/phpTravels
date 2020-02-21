@@ -1,12 +1,8 @@
 package com.spartaglobal.phpTravels.pages;
 
-import io.cucumber.java.ro.Si;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
-import java.sql.Driver;
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class SignIn {
@@ -14,15 +10,15 @@ public class SignIn {
     private WebDriver driver;
     private String homePageURL = "https://www.phptravels.net/index.php";
     private By myAccountButton = By.xpath("//div[@class='dropdown dropdown-login dropdown-tab']//a[@id='dropdownCurrency']");
-    private By loginButton = By.linkText("Login");
+    private By loginButton = By.xpath("//a[@class='dropdown-item active tr']");
 
     // Login Page
     private String loginPageURL = "https://www.phptravels.net/login";
-    private By emailTextBox = By.xpath("//input[@placeholder='Email']");
-    private By passwordTextBox = By.xpath("//input[@placeholder='Password']");
+    private By emailTextBox = By.name("username");
+    private By passwordTextBox = By.name("password");
     private By loginPageLoginButton = By.xpath("//button[@class='btn btn-primary btn-lg btn-block loginbtn']");
 
-    private By errorMessageText = By.xpath("//div[@class='resultlogin']//*");
+    private By errorMessageText = By.xpath("//div[@class='alert alert-danger']");
     public SignIn(WebDriver driver){
         this.driver = driver;
     }
@@ -34,6 +30,7 @@ public class SignIn {
 
     public SignIn clickMyAccountButton(){
         driver.findElement(myAccountButton).click();
+
         return this;
     }
     public SignIn clickLoginButton(){
@@ -73,12 +70,7 @@ public class SignIn {
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
     }
 
-    public String checkErrorMessageText(){
-        String errorMessage = "";
-        List<WebElement> elements = driver.findElements(errorMessageText);
-        for(WebElement element : elements){
-            errorMessage = element.getText();
-        }
-        return errorMessage;
+    public String checkErrorMessageText() {
+        return driver.findElement(errorMessageText).getText();
     }
 }

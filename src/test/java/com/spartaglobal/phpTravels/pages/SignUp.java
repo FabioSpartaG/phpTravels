@@ -1,8 +1,10 @@
 package com.spartaglobal.phpTravels.pages;
 
-import io.cucumber.java.ro.Si;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+import java.util.List;
 
 public class SignUp {
     private WebDriver driver;
@@ -21,6 +23,7 @@ public class SignUp {
     private By confirmPasswordTextBox = By.name("confirmpassword");
     private By getSignUpButton = By.xpath("//button[@class='signupbtn btn_full btn btn-success btn-block btn-lg']");
     private By getErrorMessageText = By.xpath("//div[@class='alert alert-danger']");
+    private By getCookieAcceptButton = By.xpath("//button[@class='cc-btn cc-dismiss']");
 
     public SignUp clickSignUpButton(){
         driver.findElement(signUpButton).click();
@@ -71,6 +74,17 @@ public class SignUp {
         return this;
     }
 
+    public boolean checkIfButtonIsVisible(){
+        List<WebElement> button = driver.findElements(getCookieAcceptButton);
+        if(button.size() > 0 && button.get(0).isDisplayed()){
+            return true;
+        }
+        return false;
+    }
+    public SignUp clickCookieAcceptButton(){
+         driver.findElement(getCookieAcceptButton).click();
+         return this;
+    }
     public String getAccountURL(){
        return driver.getCurrentUrl();
     }

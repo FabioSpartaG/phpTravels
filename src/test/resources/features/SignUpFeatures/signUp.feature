@@ -68,4 +68,4 @@ Feature: As a user,
 
     Examples:
       | firstname      | lastname      | email                             |password            | repassword| phoneNumber |
-      | Fabio          | Fernandes     | testemail@spartatest123.test         |Test1234           | Test1234  | 079456321   |
+      | Fabio          | Fernandes     | testemail@testingemail3345.test         |Test1234           | Test1234  | 079456321   |

@@ -10,7 +10,7 @@ import org.junit.Assert;
 
 public class SignUpStepDefs {
 
-    private static SeleniumConfig seleniumConfig = new SeleniumConfig("chrome","C:\\Users\\fabio\\Downloads\\chromedriver.exe");
+    private static SeleniumConfig seleniumConfig = new SeleniumConfig("chrome","D:\\Java\\chromedriver.exe");
     private static PHPTravelsSite phpTravelsSite = new PHPTravelsSite(seleniumConfig.getDriver());
 
     @Given("I am on the homepage")
@@ -73,6 +73,9 @@ public class SignUpStepDefs {
 
     @When("I press the Sign Up button")
     public void i_press_the_Sign_Up_button() {
+        if(phpTravelsSite.getSignUp().checkIfButtonIsVisible()) {
+            phpTravelsSite.getSignUp().clickCookieAcceptButton();
+        }
         phpTravelsSite.getSignUp().clickSignUpButtonInsideSignUp();
     }
 
